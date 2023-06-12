@@ -82,5 +82,23 @@ public class BreakoutGUI extends Stage implements Observer {
             rectangle.setHeight(paddle.getHeight());
             rectangle.relocate(paddle.getX()-paddle.getWidth()/2,paddle.getY()-paddle.getHeight()/2);
         }
+        if(obs instanceof Brick) {
+            Brick brick = (Brick) obs;
+            if(brickrects == null) {
+                brickrects = new Rectangle[brick.getRows()][brick.getColumns()];
+            }
+            if(brickrects[brick.getRow()][brick.getColumn()] == null) {
+                Rectangle newRect = new Rectangle();
+                newRect.setStyle("-fx-fill: red; -fx-stroke: yellow; -fx-stroke-width: 2; -fx-stroke-type: inside");
+                newRect.setWidth(brick.getWidth());
+                newRect.setHeight(brick.getHeight());
+                newRect.relocate(brick.getX(),brick.getY());
+                brickrects[brick.getRow()][brick.getColumn()] = newRect;
+                pane.getChildren().add(newRect);
+            } else {
+                brickrects[brick.getRow()][brick.getColumn()].setVisible(brick.isVisible());
+            }
+
+        }
     }
 }
