@@ -4,8 +4,8 @@ Programmiert mit JavaFX und dem Observer-Pattern
 ![Screenshot of the Breakout-Stage](https://github.com/hrwagner/breakoutBluej/blob/main/screenshot.png)
 
 ## TODO:
-*GameControl: tick, keyPressed, restartClicked 
-*Ball: move
-*Paddle: setX
+* GameControl: tick, keyPressed, restartClicked 
+* Ball: move
+* Paddle: setX
 
 
