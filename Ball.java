@@ -66,10 +66,20 @@ public class Ball extends Observable
     }
 
     public int checkCollisionPlayfield() {
-        return NONE;
+        if (((x+dx)+radius) > playfield.getWidth()) return RIGHT;
+        else if(((y+dy)+radius) > playfield.getHeight()) return BOTTOM;
+        else if(((x+dx)-radius) < 0) return LEFT;
+        else if(((y+dy)-radius) < 0) return TOP;
+        else return NONE;
     }
 
     public int checkCollisionPaddle() {
+        Paddle paddle = playfield.getPaddle();
+        if((y+dy)+radius >= paddle.getY()-paddle.getHeight()/2) {
+            if((x+dx) >= paddle.getX()-paddle.getWidth()/2 && (x+dx) <= paddle.getX()+paddle.getWidth()/2) {
+                return BOTTOM;
+            }
+        }
         return NONE;
     }
 
