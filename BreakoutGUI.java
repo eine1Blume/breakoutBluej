@@ -61,6 +61,26 @@ public class BreakoutGUI extends Stage implements Observer {
     }
 
     public void update(Observable obs, Object o) {
-        
+        if(obs instanceof Playfield) {
+            Playfield p = (Playfield) obs;
+            if(p.isGameover()) {
+                vbox.setVisible(true);
+                pane.setCursor(Cursor.DEFAULT);
+            } else {
+                vbox.setVisible(false);
+                pane.setCursor(Cursor.NONE);
+            }
+        }
+        if(obs instanceof Ball) {
+            Ball ball = (Ball) obs;
+            circle.setRadius(ball.getRadius());
+            circle.relocate(ball.getX()-ball.getRadius(),ball.getY()-ball.getRadius());
+        }
+        if(obs instanceof Paddle) {
+            Paddle paddle = (Paddle) obs;
+            rectangle.setWidth(paddle.getWidth());
+            rectangle.setHeight(paddle.getHeight());
+            rectangle.relocate(paddle.getX()-paddle.getWidth()/2,paddle.getY()-paddle.getHeight()/2);
+        }
     }
 }
