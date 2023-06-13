@@ -42,11 +42,13 @@ public class Ball extends Observable
         int edge = checkCollisionPlayfield();
         if(edge != NONE) {
             if(edge == BOTTOM) {
-                // TODO: call the playfields gameOver()-method    
+                // TODO: call the playfields gameOver()-method
+                playfield.setGameover();
             } else {
                 // future collision detected:
                 // change direction according to colliding edge
                 // TODO: call the balls bounce-method with "edge" as parameter
+                bounce(edge);
             }
         }
         // check future collision with paddle
