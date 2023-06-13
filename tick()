@@ -1,0 +1,12 @@
+public void tick() {
+        // gamelooptimer calls this method at short intervals
+        // TODO get ball-Object from playfield an call its its method move()
+        Ball b = playfield.getBall();
+        b.move();
+        if(playfield.isAutoplay()) {
+            playfield.getPaddle().setX(playfield.getBall().getX());
+        }
+        for (Brick brick : playfield.getBricks()) {
+            brick.checkCollisionBall();
+        }
+    }
